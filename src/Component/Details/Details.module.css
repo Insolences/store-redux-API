@@ -1,0 +1,23 @@
+.h2{
+    color: #ffc107;
+    text-align: center;
+}
+
+.card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 40%;
+    margin: auto;
+    background-color: #fff;
+}
+
+.body, .list{
+    text-align: center;
+    width: 100%;
+}
+
+
+.img{
+
+}

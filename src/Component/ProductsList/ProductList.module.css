@@ -1,0 +1,13 @@
+.h2_home{
+    text-align: center;
+    color: #ffc107;
+}
+
+.cardGroup{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+

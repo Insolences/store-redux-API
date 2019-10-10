@@ -1,0 +1,31 @@
+.h2{
+    text-align: center;
+    color: #ffc107;
+}
+
+.errors{
+    text-align: center;
+}
+
+.radioCheck{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 15px;
+}
+
+.card{
+    width: 100%;
+    margin-top: 15px;
+    margin-right: 20px;
+    background-color: #fff;
+}
+
+.addCard{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}

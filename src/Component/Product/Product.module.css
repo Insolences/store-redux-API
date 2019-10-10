@@ -1,0 +1,30 @@
+.radioCheck{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card{
+    max-width: 22%;
+    margin-top: 15px;
+    margin-right: 20px;
+    background-color: #fff;
+    position: relative;
+}
+
+.cardIsEmpty{
+    position: absolute;
+    left:0;
+    top: 193px;
+    height: 54%;
+    width: 100%;
+    z-index: 3;
+    background-image: url("../../notinstock.png");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.img{
+    max-height: 214px;
+}

@@ -1,0 +1,9 @@
+.input[type=text], .input[type=number]{
+    float: right;
+    margin-right: 15%;
+    width: 70%;
+}
+
+.input[type=radio] {
+
+}

@@ -1,0 +1,15 @@
+.pagination li{
+
+    margin: 0 5px;
+}
+
+.li a{
+    user-select: none;
+}
+
+
+.isActive{
+    user-select: none;
+    padding: 7px 13px 8px;
+    background-color: #ffc107;
+}
