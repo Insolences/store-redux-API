@@ -2,10 +2,9 @@ import React from "react";
 import s from "./AddProduct.module.css";
 import { Input } from "../Input";
 import { Navigation } from "../Navigation/Navigation";
-import { API } from "../API";
 import { Redirect } from "react-router";
 
-export default class AddProduct extends React.Component {
+export class AddProduct extends React.Component {
   state = {
     inStock: "true",
     redirect: false,
@@ -26,20 +25,16 @@ export default class AddProduct extends React.Component {
       quantity: parseInt(this.inputQuantityRef.current.value),
       inStock: this.state.inStock === "true"
     };
-
-    API.addProduct(product).then(res => {
+    this.props.addProductEvent(product).then(res => {
       if (res.status !== 200) {
         this.setState({
           errors: res.body.errors
         });
-      } else {
+      } else
         this.setState({
-          redirect: true
+          errors: {}
         });
-        console.log("Add product");
-      }
     });
-
     this.inputTitleRef.current.value = "";
     this.inputPriceRef.current.value = "";
     this.inputQuantityRef.current.value = "";

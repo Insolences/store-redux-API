@@ -3,9 +3,8 @@ import { Redirect } from "react-router-dom";
 import s from "./Edit.module.css";
 import { Navigation } from "../Navigation/Navigation";
 import { Input } from "../Input";
-import { API } from "../API";
 
-export default class Edit extends React.Component {
+export class Edit extends React.Component {
   state = {
     products: {},
     inStock: "true",
@@ -21,13 +20,13 @@ export default class Edit extends React.Component {
 
   componentDidMount() {
     const id = parseInt(this.props.match.params.id);
-    API.getProduct(id).then(res => {
+    this.props.getProductEvent(id).then(res => {
       if (res.status !== 200) {
-        alert("Что то пошло не так");
-      }
-      this.setState({
-        products: res.body
-      });
+        alert("ERROR");
+      } else
+        this.setState({
+          products: res.body
+        });
     });
   }
 
@@ -48,22 +47,20 @@ export default class Edit extends React.Component {
       inStock: this.state.inStock === "true"
     };
     const id = parseInt(this.props.match.params.id);
-    API.editProduct(id, product).then(res => {
+    this.props.editProductEvent(id, product).then(res => {
       if (res.status !== 200) {
         this.setState({
           errors: res.body.errors
         });
-      } else {
+      } else
         this.setState({
+          errors: {},
           redirect: true
         });
-        console.log("EDIT product");
-      }
     });
   };
 
   showErrors = errorKey => {
-    console.log("errors", this.state.errors);
     if (this.state.errors[errorKey]) {
       return (
         <div className="error alert-danger">

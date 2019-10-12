@@ -3,20 +3,6 @@ import s from "./Pagination.module.css";
 import { ListItem } from "../ListItem";
 
 export default class Pagination extends React.Component {
-  // state={
-  //     optionsState:[]
-  // };
-  //
-  // renderOptions = ()=>{
-  //     return (
-  //         <select value={this.state.optionsState}>
-  //             <option value="4">4 product in page</option>
-  //             <option value="8">8 product in page</option>
-  //             <option value="12">12 product in page</option>
-  //         </select>
-  //     )
-  // };
-  //
 
   NumberList = () => {
     let lengthPage = this.props.pages;

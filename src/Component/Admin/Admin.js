@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import s from "./Admin.module.css";
-import ProductList from "../ProductsList/ProductList";
+import { ProductList } from "../ProductsList";
 
-export default class Admin extends React.Component {
+export class Admin extends React.Component {
   render() {
     return (
       <>

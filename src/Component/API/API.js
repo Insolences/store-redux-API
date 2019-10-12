@@ -1,9 +1,9 @@
 const API_BASE = process.env.REACT_APP_API_BASE;
 
 class APIRequest {
-  async getProductsList(index) {
+  async getProductsList(page) {
     let response = await fetch(
-      API_BASE + `${"/product/list?size=4&page="}${index}`
+      API_BASE + `${"/product/list?size=4&page="}${page}`
     );
 
     let body = {};
@@ -13,10 +13,7 @@ class APIRequest {
 
     return {
       status: response.status,
-      body: body.content,
-      totalPages: body.totalPages,
-      size: body.size,
-      pageNumber: body.pageNumber
+      body: body
     };
   }
 

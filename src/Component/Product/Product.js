@@ -4,18 +4,19 @@ import img from "../../qwe.jpg";
 import s from "./Product.module.css";
 import { Redirect } from "react-router";
 
-export default class Product extends React.Component {
+export class Product extends React.Component {
   state = {
     products: this.props.product,
     redirect: false
   };
+
   componentDidMount() {
     this.setState({
       products: this.props.product
     });
   }
 
-  clickToDelete = e => {
+  handlerClickToDelete = e => {
     e.preventDefault();
     let id = this.state.products.id;
     this.props.ToDelete(id);
@@ -47,7 +48,7 @@ export default class Product extends React.Component {
               <button
                 type="button"
                 className="btn btn-warning"
-                onClick={this.clickToDelete}
+                onClick={this.handlerClickToDelete}
               >
                 Delete
               </button>

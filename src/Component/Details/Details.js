@@ -2,22 +2,21 @@ import React from "react";
 import s from "./Details.module.css";
 import img from "../../qwe.jpg";
 import { Navigation } from "../Navigation/Navigation";
-import { API } from "../API";
 
-export default class Details extends React.Component {
+export class Details extends React.Component {
   state = {
     product: {}
   };
 
   componentDidMount() {
     const id = parseInt(this.props.match.params.id);
-    API.getProduct(id).then(res => {
+    this.props.getProductEvent(id).then(res => {
       if (res.status !== 200) {
-        alert("Что то пошло не так");
-      }
-      this.setState({
-        product: res.body
-      });
+        alert("ERROR");
+      } else
+        this.setState({
+          product: res.body
+        });
     });
   }
 
