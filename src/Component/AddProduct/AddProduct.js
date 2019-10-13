@@ -43,9 +43,9 @@ export class AddProduct extends React.Component {
   showErrors = errorKey => {
     if (this.state.errors[errorKey]) {
       return (
-        <div className="error alert-danger">
+        <div className="error alert-danger text-center d-flex flex-column">
           {this.state.errors[errorKey].map(el => (
-            <p className={s.errors}>{el}</p>
+            <span>{el}</span>
           ))}
         </div>
       );

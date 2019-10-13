@@ -6,7 +6,7 @@ import { Input } from "../Input";
 
 export class Edit extends React.Component {
   state = {
-    products: {},
+    product: {},
     inStock: "true",
     redirect: false,
     errors: {}
@@ -25,7 +25,7 @@ export class Edit extends React.Component {
         alert("ERROR");
       } else
         this.setState({
-          products: res.body
+          product: res.body
         });
     });
   }
@@ -63,9 +63,9 @@ export class Edit extends React.Component {
   showErrors = errorKey => {
     if (this.state.errors[errorKey]) {
       return (
-        <div className="error alert-danger">
+        <div className="error alert-danger text-center d-flex flex-column">
           {this.state.errors[errorKey].map(el => (
-            <p className={s.errors}>{el}</p>
+            <span>{el}</span>
           ))}
         </div>
       );
@@ -77,7 +77,7 @@ export class Edit extends React.Component {
     if (this.state.redirect) {
       return <Redirect push to="/admin" />;
     }
-    const { title, image, id, quantity, price } = this.state.products;
+    const { title, image, id, quantity, price } = this.state.product;
     return (
       <>
         <Navigation />

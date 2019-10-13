@@ -10,14 +10,14 @@ export const actionGetProductList = page => dispatch => {
   API.getProductsList(page).then(res => {
     if (res.status !== 200) {
       alert("Что то пошло не так");
-    } else dispatch(actionGetProductListSuccess(res));
+    } else dispatch(actionGetProductListSuccess(res.body));
   });
 };
 
-export const actionGetProductListSuccess = res => {
+export const actionGetProductListSuccess = products => {
   return {
     type: GET_PRODUCT_LIST,
-    payload: res.body
+    payload: products
   };
 };
 
@@ -40,7 +40,7 @@ export const actionGetProductSuccess = res => {
 export const actionAddProduct = product => () => {
   return API.addProduct(product).then(res => {
     if (res.status !== 200) {
-      alert("ERROR");
+      return res;
     } else alert("Success");
     return res;
   });
@@ -49,7 +49,7 @@ export const actionAddProduct = product => () => {
 export const actionEditProduct = (id, product) => dispatch => {
   return API.editProduct(id, product).then(res => {
     if (res.status !== 200) {
-      alert("Что то пошло не так");
+      return res;
     } else dispatch(actionEditProductSuccess(res));
     return res;
   });

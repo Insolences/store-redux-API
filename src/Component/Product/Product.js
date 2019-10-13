@@ -6,19 +6,19 @@ import { Redirect } from "react-router";
 
 export class Product extends React.Component {
   state = {
-    products: this.props.product,
+    product: this.props.product,
     redirect: false
   };
 
   componentDidMount() {
     this.setState({
-      products: this.props.product
+      product: this.props.product
     });
   }
 
   handlerClickToDelete = e => {
     e.preventDefault();
-    let id = this.state.products.id;
+    let id = this.state.product.id;
     this.props.ToDelete(id);
   };
 

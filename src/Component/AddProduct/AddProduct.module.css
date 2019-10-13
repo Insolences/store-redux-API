@@ -3,10 +3,6 @@
     color: #ffc107;
 }
 
-.errors{
-    text-align: center;
-}
-
 .radioCheck{
     display: flex;
     flex-direction: column;

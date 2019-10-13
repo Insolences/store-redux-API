@@ -5,10 +5,6 @@
     background-color: #fff;
 }
 
-.errors{
-    text-align: center;
-}
-
 .radioCheck{
     display: flex;
     flex-direction: column;

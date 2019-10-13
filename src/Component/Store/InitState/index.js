@@ -1,5 +1,8 @@
 export const initState = {
-  products:[],
-  pages:0,
-  pageNumber:0
-  };
+  products: [],
+  productDetails: {},
+  pages: 0,
+  pageNumber: 0,
+  error: null,
+  message: null
+};
