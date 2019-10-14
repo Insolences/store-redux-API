@@ -11,13 +11,13 @@ export function Navigation() {
       >
         Home
       </Link>
-      <Link
-        to="/admin"
-        className={`${"flex-sm-fill text-sm-center nav-link "} ${s.link}`}
-        href="#"
-      >
-        Admin
-      </Link>
+      {/*<Link*/}
+      {/*to="/admin"*/}
+      {/*className={`${"flex-sm-fill text-sm-center nav-link "} ${s.link}`}*/}
+      {/*href="#"*/}
+      {/*>*/}
+      {/*Admin*/}
+      {/*</Link>*/}
     </nav>
   );
 }

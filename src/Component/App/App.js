@@ -5,9 +5,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { AddProduct } from "../AddProduct";
 import { Edit } from "../Edit";
 import { Details } from "../Details";
-import {Login} from "../Login";
-import {Registration} from "../Registration";
-
+import { Login } from "../Login";
+import { Registration } from "../Registration";
 
 export default class App extends React.Component {
   render() {
@@ -15,8 +14,8 @@ export default class App extends React.Component {
       <Router>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/login" exact component={Login}/>
-          <Route path={"/registration"} exact component={Registration}/>
+          <Route path="/login" exact component={Login} />
+          <Route path={"/registration"} exact component={Registration} />
           <Route path="/admin" exact component={Admin} />
           <Route path="/admin/add" exact component={AddProduct} />
           <Route path="/home/details/:id" exact component={Details} />
