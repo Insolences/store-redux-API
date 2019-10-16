@@ -3,7 +3,8 @@ import { Home } from "./Home";
 
 function mapStateToProps(state) {
   return {
-    products: state.products
+    products: state.products,
+    user: state.user
   };
 }
 

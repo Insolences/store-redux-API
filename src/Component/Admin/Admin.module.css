@@ -1,7 +1,7 @@
 .addProduct{
   position: fixed;
     right: 20px;
-    top: 48px;
+    top: 0;
     z-index: 2;
 }
 

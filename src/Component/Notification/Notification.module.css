@@ -18,17 +18,15 @@
     position: relative;
 }
 
-.buttons{
+.content{
+    position: relative;
     display: flex;
-    justify-content: center;
-    margin-top: 30px;
-}
-
-.buttons .button{
-    width: 100px;
-    display: block;
-}
-
-.buttons .button:first-child{
-    margin-right: 20px;
+    flex-direction: column;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: .3rem;
+    outline: 0;
+    width: 470px;
 }

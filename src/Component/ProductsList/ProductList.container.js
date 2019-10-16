@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { ProductList } from "./ProductList";
-import { actionDeleteProduct, actionGetProductList } from "../Store/Action";
+import { actionDeleteProduct, actionGetProductList } from "../../Store/Action";
 
 function mapDispatchToProps(dispatch) {
   return {

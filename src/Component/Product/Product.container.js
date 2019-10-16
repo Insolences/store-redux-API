@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { Product } from "./Product";
-import { actionDeleteProduct } from "../Store/Action";
+import { actionDeleteProduct } from "../../Store/Action";
 
 function mapDispatchToProps(dispatch) {
   return {

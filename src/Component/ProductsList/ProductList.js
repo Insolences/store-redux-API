@@ -1,7 +1,7 @@
 import React from "react";
 import { Product } from "../Product";
 import s from "./ProductList.module.css";
-import { Navigation } from "../Navigation/Navigation";
+import { Navigation } from "../Navigation";
 import Pagination from "../Pagination/Pagination";
 
 export class ProductList extends React.Component {
@@ -11,6 +11,7 @@ export class ProductList extends React.Component {
 
   componentDidMount() {
     this.props.getProductListEvent(this.props.pageNumber);
+    console.log(this.props.products);
   }
 
   ToDelete = id => {
@@ -26,7 +27,7 @@ export class ProductList extends React.Component {
   render() {
     return (
       <>
-        <Navigation />
+        <Navigation isAdmin={this.props.isAdmin} />
         <h2 className={s.h2_home}>Product List</h2>
         <div className={s.cardGroup}>
           {this.props.products.map(el => (

@@ -1,13 +1,38 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Navigation } from "../Navigation/Navigation";
+import { Link, Redirect } from "react-router-dom";
+import { Navigation } from "../Navigation";
+import { API } from "../../Service/API";
 
-export default class Login extends React.Component {
+export class Login extends React.Component {
+  state = {
+    redirect: false
+  };
 
-  inputEmailRef = React.createRef();
-  inputPasswordRef = React.createRef();
+  emailRef = React.createRef();
+  passwordRef = React.createRef();
+
+  loginHandler = async () => {
+    let res = await API.login(
+      this.emailRef.current.value,
+      this.passwordRef.current.value
+    );
+
+    if (res.status !== 200) {
+      this.props.showErrorEvent("Bad credentials");
+    } else {
+      API.tryRestoreSession();
+      this.props.showNotificationEvent("You success logged");
+      console.log(this.state.user);
+      this.setState({
+        redirect: true
+      });
+    }
+  };
 
   render() {
+    if (this.state.redirect) {
+      return <Redirect push to="/home" />;
+    }
     return (
       <>
         <Navigation />
@@ -17,15 +42,19 @@ export default class Login extends React.Component {
             type="email"
             className="form-control mb-4"
             placeholder="E-mail"
-            ref={this.inputEmailRef}
+            ref={this.emailRef}
           />
           <input
             type="password"
             className="form-control mb-4"
             placeholder="Password"
-            ref={this.inputPasswordRef}
+            ref={this.passwordRef}
           />
-          <button className="btn btn-info btn-block my-4" type="submit">
+          <button
+            className="btn btn-info btn-block my-4"
+            type="button"
+            onClick={this.loginHandler}
+          >
             Sign in
           </button>
           <p>

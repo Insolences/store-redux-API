@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { Edit } from "./Edit";
-import { actionEditProduct, actionGetProduct } from "../Store/Action";
+import { actionEditProduct, actionGetProduct } from "../../Store/Action";
 
 function mapDispatchToProps(dispatch) {
   return {

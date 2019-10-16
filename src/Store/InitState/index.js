@@ -4,5 +4,6 @@ export const initState = {
   pages: 0,
   pageNumber: 0,
   error: null,
-  message: null
+  message: null,
+  user: null
 };

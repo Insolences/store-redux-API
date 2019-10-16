@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./AddProduct.module.css";
 import { Input } from "../Input";
-import { Navigation } from "../Navigation/Navigation";
+import { Navigation } from "../Navigation";
 import { Redirect } from "react-router";
 
 export class AddProduct extends React.Component {
@@ -137,7 +137,7 @@ export class AddProduct extends React.Component {
     }
     return (
       <>
-        <Navigation />
+        <Navigation isAdmin={true} />
         <h2 className={s.h2}>Add Product</h2>
         <div className={s.addCard}>{this.renderForm()}</div>
       </>

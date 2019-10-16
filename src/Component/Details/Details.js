@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./Details.module.css";
 import img from "../../qwe.jpg";
-import { Navigation } from "../Navigation/Navigation";
+import { Navigation } from "../Navigation";
 
 export class Details extends React.Component {
   state = {
