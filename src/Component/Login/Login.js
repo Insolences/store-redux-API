@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
-import { Navigation } from "../Navigation";
 import { API } from "../../Service/API";
 
 export class Login extends React.Component {
@@ -31,11 +30,10 @@ export class Login extends React.Component {
 
   render() {
     if (this.state.redirect) {
-      return <Redirect push to="/home" />;
+      return <Redirect push to="/" />;
     }
     return (
       <>
-        <Navigation />
         <form className="text-center border border-light p-5">
           <p className="h4 mb-4">Sign in</p>
           <input

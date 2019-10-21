@@ -5,7 +5,6 @@ import { actionDeleteProduct, actionGetProductList } from "../../Store/Action";
 
 function mapDispatchToProps(dispatch) {
   return {
-    //getProductListEvent: page => dispatch(actionGetProductList(page)),
     getProductListEvent: bindActionCreators(actionGetProductList, dispatch),
     deleteProductEvent: id => dispatch(actionDeleteProduct(id))
   };

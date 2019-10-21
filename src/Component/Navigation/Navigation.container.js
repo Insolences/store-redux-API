@@ -1,11 +1,10 @@
 import { connect } from "react-redux";
-import { Home } from "./Home";
+import { Navigation } from "./Navigation";
 
 function mapStateToProps(state) {
   return {
-    products: state.products,
     user: state.user
   };
 }
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(Navigation);

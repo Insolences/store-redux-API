@@ -18,3 +18,10 @@
     cursor: pointer;
 }
 
+.loading{
+    position: fixed;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+}
+

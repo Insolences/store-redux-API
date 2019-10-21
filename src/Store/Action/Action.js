@@ -1,12 +1,14 @@
 import { createAction } from "redux-actions";
 
 import {
+  IS_INIT,
   USER_LOGIN,
   SHOW_NOTIFICATION,
   SHOW_ERROR_MASSAGE,
   CLEAR_ERROR_MESSAGE,
   GET_PRODUCT_LIST,
-  GET_PRODUCT
+  GET_PRODUCT,
+  USER_LOG_OUT
 } from "./Type";
 
 import { API } from "../../Service/API/index";
@@ -73,7 +75,10 @@ export const actionDeleteProduct = id => dispatch => {
     });
 };
 
+export const actionIsInit = createAction(IS_INIT);
+
 export const actionClearErrorMessage = createAction(CLEAR_ERROR_MESSAGE);
 export const actionShowNotification = createAction(SHOW_NOTIFICATION);
 export const actionUserLogin = createAction(USER_LOGIN);
 export const actionShowError = createAction(SHOW_ERROR_MASSAGE);
+export const actionLogOut = createAction(USER_LOG_OUT);

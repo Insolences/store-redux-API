@@ -8,3 +8,5 @@ export const CLEAR_ERROR_MESSAGE = "CLEAR_ERROR_MESSAGE";
 export const SHOW_NOTIFICATION = "SHOW_NOTIFICATION";
 export const USER_LOGIN = "USER_LOGIN";
 export const USER_SING_UP = "USER_SING_UP";
+export const USER_LOG_OUT = "USER_LOG_OUT";
+export const IS_INIT = "IS_INIT";

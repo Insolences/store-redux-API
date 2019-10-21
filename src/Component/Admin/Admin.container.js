@@ -3,7 +3,7 @@ import { Admin } from "./Admin";
 
 function mapStateToProps(state) {
   return {
-    products: state.products
+    user: state.user
   };
 }
 

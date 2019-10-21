@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import s from "./Notification.module.css";
-const modalRoot = document.getElementById("modal-root");
+const notification = document.getElementById("notification");
 
 export class Notification extends React.Component {
   state = {
@@ -15,7 +15,7 @@ export class Notification extends React.Component {
     this.props.clearErrorMassageEvent();
   };
 
-  static getDerivedStateFromProps(props, state) {
+  static getDerivedStateFromProps(props) {
     if (props.message || props.error) {
       return {
         isOpen: true
@@ -33,7 +33,7 @@ export class Notification extends React.Component {
     }
   };
 
-  renderModal() {
+  renderNotification() {
     return (
       <div className={s.shadow} onClick={this.shadowClick}>
         <div className={`modal-dialog ${s.modal}`}>
@@ -61,6 +61,6 @@ export class Notification extends React.Component {
     if (this.state.isOpen === false) {
       return null;
     }
-    return ReactDOM.createPortal(this.renderModal(), modalRoot);
+    return ReactDOM.createPortal(this.renderNotification(), notification);
   }
 }

@@ -1,7 +1,6 @@
 import React from "react";
 import s from "./Details.module.css";
 import img from "../../qwe.jpg";
-import { Navigation } from "../Navigation";
 
 export class Details extends React.Component {
   state = {
@@ -36,7 +35,6 @@ export class Details extends React.Component {
     const { title, price, id, quantity, inStock } = this.state.product;
     return (
       <>
-        <Navigation />
         <h2 className={s.h2}>Details</h2>
         <div className={`${"card "} ${s.card}`}>
           {this.renderImg()}

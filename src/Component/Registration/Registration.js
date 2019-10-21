@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
-import { Navigation } from "../Navigation";
 import { API } from "../../Service/API";
 
 export default class Registration extends React.Component {
@@ -23,17 +22,16 @@ export default class Registration extends React.Component {
       password: this.passwordRef.current.value,
       confirmPassword: this.confirmPasswordRef.current.value
     };
-    await API.singUp(user).then(res => {
-      if (res.status !== 200) {
-        this.setState({
-          errors: res.body.errors
-        });
-      } else
-        this.setState({
-          redirect: true,
-          errors: {}
-        });
-    });
+    let res = await API.singUp(user);
+    if (res.status !== 200) {
+      this.setState({
+        errors: res.body.errors
+      });
+    } else
+      this.setState({
+        redirect: true,
+        errors: {}
+      });
   };
 
   showErrors = errorKey => {
@@ -51,11 +49,10 @@ export default class Registration extends React.Component {
 
   render() {
     if (this.state.redirect) {
-      return <Redirect push to="/" />;
+      return <Redirect to="/" />;
     }
     return (
       <>
-        <Navigation />
         <form className="text-center border border-light p-5">
           <p className="h4 mb-4">Sign up</p>
           <div className="form-row mb-4">

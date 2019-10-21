@@ -1,6 +1,7 @@
 import axios from "axios";
-import { storage } from "../Storage/index";
-import { store } from "../../Store/Config/index";
+import { storage } from "../Storage";
+import { store } from "../../Store/Config";
+import { redirect } from "../History";
 import {
   ACCESS_TOKEN,
   AUTH_STORE,
@@ -11,7 +12,9 @@ import {
 
 import {
   actionUserLogin,
-  actionShowNotification
+  actionShowNotification,
+  actionLogOut,
+  actionShowError
 } from "../../Store/Action/index";
 
 const API_BASE = process.env.REACT_APP_API_BASE;
@@ -77,20 +80,14 @@ class APIRequest {
     return result;
   }
 
-  async logOut() {
-    let result = {};
-
-    try {
-      let res = await http.get("user/me");
-      deleteSession(res);
-    } catch (e) {
-      result.status = e.response.status;
-      result.body = e.response.data;
-    }
+  logOut() {
+    deleteSession();
+    redirect("/");
+    store.dispatch(actionShowNotification("Log Out completed successfully"));
   }
 
   async getProductsList(page) {
-    let url = `${"/product/list?size=4&page="}${page}`;
+    let url = `/product/list?size=4&page=${page}`;
 
     let response = await http.get(url);
     return {
@@ -139,13 +136,10 @@ function saveSession({ accessToken, refreshToken }) {
   http.defaults.headers[AUTH_HEADER] = AUTH_BEARER + accessToken;
 }
 
-function deleteSession({ accessToken, refreshToken }) {
-  storage.set(AUTH_STORE, {
-    [ACCESS_TOKEN]: null,
-    [REFRESH_TOKEN]: null
-  });
-
-  http.defaults.headers[AUTH_HEADER] = null;
+function deleteSession() {
+  storage.delete(AUTH_STORE);
+  delete http.defaults.headers[AUTH_HEADER];
+  store.dispatch(actionLogOut());
 }
 
 function getSession() {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Admin } from "../Admin";
 import { Home } from "../Home";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Router, Route } from "react-router-dom";
 import { AddProduct } from "../AddProduct";
 import { Edit } from "../Edit";
 import { Details } from "../Details";
@@ -9,20 +9,32 @@ import { Login } from "../Login";
 import { Registration } from "../Registration";
 import { Notification } from "../Notification";
 import { API } from "../../Service/API";
+import { history } from "../../Service/History";
+import { Navigation } from "../Navigation";
+import img from "./index.ajax-spinner-preloader.svg";
 
-export default class App extends React.Component {
+export class App extends React.Component {
   componentDidMount() {
-    API.tryRestoreSession();
+    API.tryRestoreSession().finally(this.props.isInitEvent);
   }
 
   render() {
+    if (!this.props.isInit) {
+      return (
+        <div>
+          <img src={img} />
+        </div>
+      );
+    }
+
     return (
       <>
         <Notification />
-        <Router>
+        <Router history={history}>
+          <Navigation />
           <Route path="/" exact component={Home} />
           <Route path="/login" exact component={Login} />
-          <Route path={"/registration"} exact component={Registration} />
+          <Route path="/registration" exact component={Registration} />
           <Route path="/admin" exact component={Admin} />
           <Route path="/admin/add" exact component={AddProduct} />
           <Route path="/home/details/:id" exact component={Details} />

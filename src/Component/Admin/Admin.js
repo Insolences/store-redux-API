@@ -2,15 +2,40 @@ import React from "react";
 import { Link } from "react-router-dom";
 import s from "./Admin.module.css";
 import { ProductList } from "../ProductsList";
-import { API } from "../../Service/API";
+import { Redirect } from "react-router";
 
 export class Admin extends React.Component {
-  logOut = e => {
-    e.preventDefault();
-    API.logOut().then();
+  state = {
+    redirect: false
   };
 
+  componentDidMount() {
+    const { user } = this.props;
+    if (!user) {
+      this.setState({
+        redirect: true
+      });
+    }
+    let roles = [];
+    for (let key in user) {
+      if (key === "roles") {
+        roles = user[key];
+      }
+    }
+    if (roles.some(el => el.name === "ROLE_ADMIN")) {
+      return this.setState({
+        redirect: false
+      });
+    }
+    return this.setState({
+      redirect: true
+    });
+  }
+
   render() {
+    if (this.state.redirect) {
+      return <Redirect push to="/" />;
+    }
     return (
       <>
         <Link
@@ -20,13 +45,6 @@ export class Admin extends React.Component {
         >
           Add Product
         </Link>
-        <button className="btn btn-info ">
-          <Link to="/" onClick={this.logOut}>
-            {" "}
-            LOG OUT
-          </Link>
-        </button>
-
         <ProductList isAdmin={true} />
       </>
     );

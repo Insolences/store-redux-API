@@ -1,4 +1,5 @@
 import {
+  IS_INIT,
   ADD_PRODUCT,
   EDIT_PRODUCT,
   DELETE_PRODUCT,
@@ -6,12 +7,17 @@ import {
   GET_PRODUCT,
   CLEAR_ERROR_MESSAGE,
   USER_LOGIN,
+  USER_LOG_OUT,
   SHOW_ERROR_MASSAGE,
   SHOW_NOTIFICATION
 } from "../Action/index";
 
 export function RootReducer(state, action) {
   switch (action.type) {
+    case IS_INIT: {
+      return { ...state, isInit: true };
+    }
+
     case GET_PRODUCT_LIST: {
       const { content, pageNumber, totalPages } = action.payload;
 
@@ -58,6 +64,9 @@ export function RootReducer(state, action) {
 
     case USER_LOGIN:
       return { ...state, user: action.payload };
+
+    case USER_LOG_OUT:
+      return { ...state, user: null };
 
     case SHOW_ERROR_MASSAGE: {
       return { ...state, error: action.payload };

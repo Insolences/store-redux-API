@@ -1,7 +1,6 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
 import s from "./Edit.module.css";
-import { Navigation } from "../Navigation";
 import { Input } from "../Input";
 
 export class Edit extends React.Component {
@@ -80,7 +79,6 @@ export class Edit extends React.Component {
     const { title, image, id, quantity, price } = this.state.product;
     return (
       <>
-        <Navigation isAdmin={true} />
         <h2 className={s.h2}>Edit Product</h2>
         <div className={s.editCard}>
           <form className={s.card}>
