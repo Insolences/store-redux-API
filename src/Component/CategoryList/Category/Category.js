@@ -1,5 +1,6 @@
 import React from "react";
 import s from "./Category.module.css";
+
 export class Category extends React.Component {
   state = {};
 

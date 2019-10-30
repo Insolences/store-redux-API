@@ -3,11 +3,8 @@ import { CategoryList } from "./CategoryList";
 
 function mapStateToProps(state) {
   return {
-    categoryList: state.categoryList
+    categoryList: state.app.categoryList
   };
 }
 
-export default connect(
-  mapStateToProps,
-  null
-)(CategoryList);
+export default connect(mapStateToProps)(CategoryList);

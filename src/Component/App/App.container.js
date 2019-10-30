@@ -10,7 +10,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    isInit: state.isInit
+    isInit: state.app.isInit
   };
 }
 

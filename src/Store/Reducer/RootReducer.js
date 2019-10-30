@@ -12,8 +12,9 @@ import {
   SHOW_NOTIFICATION,
   GET_COMMENTS_LIST
 } from "../Action/index";
+import { initState } from "../InitState";
 
-export function RootReducer(state, action) {
+export function RootReducer(state = initState.app, action) {
   switch (action.type) {
     case IS_INIT: {
       return { ...state, isInit: true };
