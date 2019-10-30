@@ -14,7 +14,8 @@ function mapStateToProps(state) {
   return {
     products: state.products,
     pages: state.pages,
-    pageNumber: state.pageNumber
+    pageNumber: state.pageNumber,
+    size: state.size
   };
 }
 

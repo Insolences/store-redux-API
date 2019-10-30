@@ -8,10 +8,12 @@ import { Details } from "../Details";
 import { Login } from "../Login";
 import { Registration } from "../Registration";
 import { Notification } from "../Notification";
+import { CategoryList } from "../CategoryList/CategoryList";
 import { API } from "../../Service/API";
 import { history } from "../../Service/History";
 import { Navigation } from "../Navigation";
 import img from "./index.ajax-spinner-preloader.svg";
+import s from "./App.module.css";
 
 export class App extends React.Component {
   componentDidMount() {
@@ -22,7 +24,7 @@ export class App extends React.Component {
     if (!this.props.isInit) {
       return (
         <div>
-          <img src={img} />
+          <img src={img} className={s.spinner} />
         </div>
       );
     }
@@ -39,6 +41,7 @@ export class App extends React.Component {
           <Route path="/admin/add" exact component={AddProduct} />
           <Route path="/home/details/:id" exact component={Details} />
           <Route path="/admin/product/edit/:id" exact component={Edit} />
+          <Route path="/category" exact component={CategoryList} />
         </Router>
       </>
     );

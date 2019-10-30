@@ -1,0 +1,50 @@
+ul{
+    margin-bottom: 30px;
+}
+
+li{
+    list-style-type: none;
+}
+
+.comment{
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.date{
+    margin-top: 5px;
+    padding-top: 5px;
+    border-top: 2px solid #757bff;
+    font: 12px Arial;
+}
+
+.user{
+    font: 16px  Arial;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.answerBtn{
+    float: right;
+    border-radius: 30% ;
+}
+
+.form{
+    margin-top: 20px;
+    width: 80%;
+    float: right;
+}
+
+.sendComment{
+    float: right;
+    margin: 0 5px;
+}
+
+.textarea{
+    resize: none;
+    width: 100%;
+    padding: 5px;
+}
+
+

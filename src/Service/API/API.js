@@ -13,8 +13,7 @@ import {
 import {
   actionUserLogin,
   actionShowNotification,
-  actionLogOut,
-  actionShowError
+  actionLogOut
 } from "../../Store/Action/index";
 
 const API_BASE = process.env.REACT_APP_API_BASE;
@@ -86,8 +85,18 @@ class APIRequest {
     store.dispatch(actionShowNotification("Log Out completed successfully"));
   }
 
-  async getProductsList(page) {
-    let url = `/product/list?size=4&page=${page}`;
+  async getProductsList(size, page) {
+    let url = `/product/list?${size}=4&page=${page}`;
+
+    let response = await http.get(url);
+    return {
+      status: response.status,
+      body: response.data
+    };
+  }
+
+  async getCategoryList() {
+    let url = `/category`;
 
     let response = await http.get(url);
     return {
@@ -126,7 +135,68 @@ class APIRequest {
       body: response.data
     };
   }
+
+  async addComment(id, text, parentId) {
+    let result = {};
+    try {
+      let response = await http.post("/comment/product", {
+        parent: {
+          id: parentId
+        },
+        product: {
+          id
+        },
+        text
+      });
+      result.status = response.status;
+      result.body = response.data;
+    } catch (e) {
+      result.status = e.response.status;
+      result.body = e.response.data;
+    }
+    return result;
+  }
+
+  async editComment(id, parentId, productId, text) {
+    let result = {};
+    try {
+      let response = await http.put("/comment/product", {
+        id: id,
+        parent: {
+          id: parentId
+        },
+        product: {
+          id: productId
+        },
+        text
+      });
+      result.status = response.status;
+      result.body = response.data;
+    } catch (e) {
+      result.status = e.response.status;
+      result.body = e.response.data;
+    }
+    return result;
+  }
+
+  async showComment(id, size, page) {
+    let result = {};
+    try {
+      let url = `/comment/product/${id}?size=${size}&page=${page}`;
+
+      let response = await http.get(url);
+
+      result.status = response.status;
+      result.body = response.data;
+      console.log(result.body);
+    } catch (e) {
+      result.status = e.response.status;
+      result.body = e.response.data;
+    }
+    return result;
+  }
 }
+
 function saveSession({ accessToken, refreshToken }) {
   storage.set(AUTH_STORE, {
     [ACCESS_TOKEN]: accessToken,

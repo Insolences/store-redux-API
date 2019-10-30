@@ -5,6 +5,18 @@
     z-index: 2;
 }
 
+.categories{
+    position: fixed;
+    right: 150px;
+    top: 0;
+    z-index: 2;
+}
+.tag{
+    position: fixed;
+    right: 270px;
+    top: 0;
+    z-index: 2;
+}
 .cardGroup{
     display: flex;
     align-items: center;

@@ -9,7 +9,8 @@ import {
   USER_LOGIN,
   USER_LOG_OUT,
   SHOW_ERROR_MASSAGE,
-  SHOW_NOTIFICATION
+  SHOW_NOTIFICATION,
+  GET_COMMENTS_LIST
 } from "../Action/index";
 
 export function RootReducer(state, action) {
@@ -19,13 +20,24 @@ export function RootReducer(state, action) {
     }
 
     case GET_PRODUCT_LIST: {
-      const { content, pageNumber, totalPages } = action.payload;
+      const { content, pageNumber, totalPages, size } = action.payload;
 
       return {
         ...state,
         products: content,
         pageNumber: pageNumber,
-        pages: totalPages
+        pages: totalPages,
+        size: size
+      };
+    }
+
+    case GET_COMMENTS_LIST: {
+      const { pageNumber, totalPages, commentSize } = action.payload;
+      return {
+        ...state,
+        pages: totalPages,
+        pageNumber: pageNumber,
+        commentSize: commentSize
       };
     }
 
@@ -79,6 +91,13 @@ export function RootReducer(state, action) {
     case SHOW_NOTIFICATION: {
       return { ...state, message: action.payload };
     }
+
+    // case ADD_ANSWER_COMMENT: {
+    //   return {
+    //     ...state,
+    //     parentId: action.payload
+    //   };
+    // }
   }
 
   return state;

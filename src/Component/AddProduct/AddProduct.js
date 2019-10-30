@@ -7,17 +7,22 @@ export class AddProduct extends React.Component {
   state = {
     inStock: "true",
     redirect: false,
-    errors: {}
+    errors: {},
+    category: {
+      id: 1
+    }
   };
 
   inputTitleRef = React.createRef();
   inputPriceRef = React.createRef();
   inputQuantityRef = React.createRef();
   inputUrlRef = React.createRef();
+  inputCategoryRef = React.createRef();
 
   handleClick = e => {
     e.preventDefault();
     let product = {
+      category: this.state.category,
       title: this.inputTitleRef.current.value,
       image: this.inputUrlRef.current.value,
       price: parseInt(this.inputPriceRef.current.value),
@@ -116,6 +121,12 @@ export class AddProduct extends React.Component {
             />
             Not in Stock
           </p>
+          <select className="custom-select" id="inputGroupSelect01">
+            <option selected>Choose...</option>
+            <option>Phone</option>
+            <option>...</option>
+            <option>...</option>
+          </select>
         </div>
         <div className="card-body">
           <button

@@ -3,7 +3,6 @@ import s from "./Pagination.module.css";
 import { ListItem } from "../ListItem";
 
 export default class Pagination extends React.Component {
-
   NumberList = () => {
     let lengthPage = this.props.pages;
     let listPages = [];
@@ -21,11 +20,12 @@ export default class Pagination extends React.Component {
   };
 
   render() {
+    if (!this.props.pages) {
+      return null;
+    }
+
     return (
-      <>
-        <ul className={`pagination ${s.pagination}`}>{this.NumberList()}</ul>
-        {/*{this.renderOptions()}*/}
-      </>
+      <ul className={`pagination ${s.pagination}`}>{this.NumberList()}</ul>
     );
   }
 }

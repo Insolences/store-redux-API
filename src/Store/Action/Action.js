@@ -8,13 +8,15 @@ import {
   CLEAR_ERROR_MESSAGE,
   GET_PRODUCT_LIST,
   GET_PRODUCT,
-  USER_LOG_OUT
+  USER_LOG_OUT,
+  GET_COMMENTS_LIST
+  // ADD_ANSWER_COMMENT
 } from "./Type";
 
 import { API } from "../../Service/API/index";
 
-export const actionGetProductList = page => dispatch => {
-  API.getProductsList(page).then(res => {
+export const actionGetProductList = (size, page) => dispatch => {
+  API.getProductsList(size, page).then(res => {
     if (res.status !== 200) {
       dispatch(actionShowError("No connect from server"));
     } else dispatch(actionGetProductListSuccess(res.body));
@@ -25,6 +27,21 @@ export const actionGetProductListSuccess = products => {
   return {
     type: GET_PRODUCT_LIST,
     payload: products
+  };
+};
+
+export const actionGetCommentsList = (id, commentsSize, page) => dispatch => {
+  API.showComment(id, commentsSize, page).then(res => {
+    if (res.status !== 200) {
+      dispatch(actionShowError("No connect from server"));
+    } else dispatch(actionGetCommentsListSuccess(res.body));
+  });
+};
+
+export const actionGetCommentsListSuccess = comments => {
+  return {
+    type: GET_COMMENTS_LIST,
+    payload: comments
   };
 };
 
@@ -76,7 +93,6 @@ export const actionDeleteProduct = id => dispatch => {
 };
 
 export const actionIsInit = createAction(IS_INIT);
-
 export const actionClearErrorMessage = createAction(CLEAR_ERROR_MESSAGE);
 export const actionShowNotification = createAction(SHOW_NOTIFICATION);
 export const actionUserLogin = createAction(USER_LOGIN);

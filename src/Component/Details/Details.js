@@ -1,6 +1,7 @@
 import React from "react";
 import s from "./Details.module.css";
 import img from "../../qwe.jpg";
+import CommentList from "../CommentList/CommentList.container";
 
 export class Details extends React.Component {
   state = {
@@ -49,6 +50,7 @@ export class Details extends React.Component {
               Status: {inStock ? "In Stock" : "Not in Stock"}
             </li>
           </ul>
+          <CommentList id={this.props.match.params.id} />
         </div>
       </>
     );

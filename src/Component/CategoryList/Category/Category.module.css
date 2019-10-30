@@ -1,0 +1,29 @@
+.categoryList{
+    margin: 5px auto;
+    border: 1px solid #000;
+}
+
+
+.category{
+    margin: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.container{
+    width: 60%;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+}
+
+li{
+    font-weight: bold;
+}
+
+.button{
+    margin: 0 5px;
+}

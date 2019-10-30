@@ -21,7 +21,6 @@ export class Login extends React.Component {
     } else {
       API.tryRestoreSession();
       this.props.showNotificationEvent("You success logged");
-      console.log(this.state.user);
       this.setState({
         redirect: true
       });

@@ -10,7 +10,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    products: state.products
+    comment: state.comment
   };
 }
 

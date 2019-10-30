@@ -1,11 +1,12 @@
 export const initState = {
   products: [],
   isInit: false,
-  productDetails: {},
+  product: {},
   pages: 0,
   size: 4,
+  commentsSize: 6,
   pageNumber: 0,
   error: null,
-  message: null,
-  user: null
+  user: null,
+  categoryList: []
 };

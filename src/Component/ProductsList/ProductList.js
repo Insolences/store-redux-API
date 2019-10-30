@@ -9,7 +9,7 @@ export class ProductList extends React.Component {
   };
 
   componentDidMount() {
-    this.props.getProductListEvent(this.props.pageNumber);
+    this.props.getProductListEvent(this.props.size, this.props.pageNumber);
   }
 
   ToDelete = id => {
@@ -18,7 +18,6 @@ export class ProductList extends React.Component {
         redirect: true
       });
       this.props.getProductListEvent(this.props.pageNumber);
-      console.log("Removed product");
     });
   };
 
