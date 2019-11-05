@@ -6,13 +6,11 @@ import {
   GET_PRODUCT_LIST,
   GET_PRODUCT,
   CLEAR_ERROR_MESSAGE,
-  USER_LOGIN,
-  USER_LOG_OUT,
   SHOW_ERROR_MASSAGE,
   SHOW_NOTIFICATION,
   GET_COMMENTS_LIST
-} from "../Action/index";
-import { initState } from "../InitState";
+} from "../../Action";
+import { initState } from "../../InitState";
 
 export function RootReducer(state = initState.app, action) {
   switch (action.type) {
@@ -29,16 +27,6 @@ export function RootReducer(state = initState.app, action) {
         pageNumber: pageNumber,
         pages: totalPages,
         size: size
-      };
-    }
-
-    case GET_COMMENTS_LIST: {
-      const { pageNumber, totalPages, commentSize } = action.payload;
-      return {
-        ...state,
-        pages: totalPages,
-        pageNumber: pageNumber,
-        commentSize: commentSize
       };
     }
 
@@ -75,28 +63,25 @@ export function RootReducer(state = initState.app, action) {
       return { ...state, products: newProducts };
     }
 
-    case USER_LOGIN:
-      return { ...state, user: action.payload };
-
-    case USER_LOG_OUT:
-      return { ...state, user: null };
-
-    case SHOW_ERROR_MASSAGE: {
-      return { ...state, error: action.payload };
-    }
-
-    case CLEAR_ERROR_MESSAGE: {
-      return { ...state, error: null, message: null };
-    }
-
-    case SHOW_NOTIFICATION: {
-      return { ...state, message: action.payload };
-    }
-
-    // case ADD_ANSWER_COMMENT: {
+    // case SHOW_ERROR_MASSAGE: {
+    //   return { ...state, error: action.payload };
+    // }
+    //
+    // case CLEAR_ERROR_MESSAGE: {
+    //   return { ...state, error: null, message: null };
+    // }
+    //
+    // case SHOW_NOTIFICATION: {
+    //   return { ...state, message: action.payload };
+    // }
+    //
+    // case GET_COMMENTS_LIST: {
+    //   const { pageNumber, totalPages, commentSize } = action.payload;
     //   return {
     //     ...state,
-    //     parentId: action.payload
+    //     pages: totalPages,
+    //     pageNumber: pageNumber,
+    //     commentSize: commentSize
     //   };
     // }
   }

@@ -22,13 +22,9 @@ export class Details extends React.Component {
 
   renderImg = () => {
     return this.state.product.image ? (
-      <img
-        src={this.state.product.image}
-        className={`${"card-img-top "}`}
-        alt="qwe"
-      />
+      <img src={this.state.product.image} className="card-img-top" alt="qwe" />
     ) : (
-      <img src={img} className={`${"card-img-top "}`} alt="qwe" />
+      <img src={img} className="card-img-top " alt="qwe" />
     );
   };
 
@@ -37,12 +33,12 @@ export class Details extends React.Component {
     return (
       <>
         <h2 className={s.h2}>Details</h2>
-        <div className={`${"card "} ${s.card}`}>
+        <div className={`card ${s.card}`}>
           {this.renderImg()}
-          <div className={`${"card-body "} ${s.body}`}>
+          <div className={`card-body ${s.body}`}>
             <h5 className="card-title">Title: {title}</h5>
           </div>
-          <ul className={`${"list-group list-group-flush"} ${s.list}`}>
+          <ul className={`list-group list-group-flush ${s.list}`}>
             <li className="list-group-item">ID: {id}</li>
             <li className="list-group-item">Price: {price} $</li>
             <li className="list-group-item">Quantity: {quantity}</li>

@@ -10,6 +10,7 @@ export class ProductList extends React.Component {
 
   componentDidMount() {
     this.props.getProductListEvent(this.props.size, this.props.pageNumber);
+    console.log(this.props.size, this.props.pageNumber);
   }
 
   ToDelete = id => {

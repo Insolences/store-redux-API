@@ -1,6 +1,13 @@
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { ProductList } from "./ProductList";
+import {
+  getProducts,
+  getPagination
+  // getPaginationPageNumber,
+  // getPaginationPages,
+  // getPaginationSize
+} from "../../Store/Selector/App";
 import { actionDeleteProduct, actionGetProductList } from "../../Store/Action";
 
 function mapDispatchToProps(dispatch) {
@@ -12,10 +19,10 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    products: state.products,
-    pages: state.pages,
-    pageNumber: state.pageNumber,
-    size: state.size
+    products: getProducts(state),
+    pages: getPagination(state).pages,
+    pageNumber: getPagination(state).pageNumber,
+    size: getPagination(state).size
   };
 }
 

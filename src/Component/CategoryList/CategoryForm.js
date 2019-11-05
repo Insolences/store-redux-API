@@ -33,11 +33,7 @@ const CategoryFormComponent = props => {
         {/*  loadOptions={props.promiseOptions}*/}
         {/*/>*/}
       </div>
-      <button
-        className={`btn btn-success ${s.button}`}
-        type="submit"
-        // disabled={pristine || submitting}
-      >
+      <button className={`btn btn-success ${s.button}`} type="submit">
         Add
       </button>
     </Form>

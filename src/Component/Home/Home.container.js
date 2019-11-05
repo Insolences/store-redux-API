@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { Admin } from "./Admin";
+import { Home } from "./Home";
 import { getUser } from "../../Store/Selector/App";
 function mapStateToProps(state) {
   return {
@@ -7,4 +7,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Admin);
+export default connect(mapStateToProps)(Home);

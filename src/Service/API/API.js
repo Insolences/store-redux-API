@@ -86,7 +86,7 @@ class APIRequest {
   }
 
   async getProductsList(size, page) {
-    let url = `/product/list?${size}=4&page=${page}`;
+    let url = `/product/list?size=${size}&page=${page}`;
 
     let response = await http.get(url);
     return {

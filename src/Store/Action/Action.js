@@ -10,7 +10,6 @@ import {
   GET_PRODUCT,
   USER_LOG_OUT,
   GET_COMMENTS_LIST
-  // ADD_ANSWER_COMMENT
 } from "./Type";
 
 import { API } from "../../Service/API/index";

@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
 import { Comment } from "./Comment";
-
+import { getUser } from "../../../Store/Selector/App";
 function mapStateToProps(state) {
   return {
-    user: state.user
+    user: getUser(state)
   };
 }
 
