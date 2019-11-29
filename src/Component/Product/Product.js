@@ -26,9 +26,9 @@ export class Product extends React.Component {
     const { image } = this.props.product;
 
     return image ? (
-      <img src={image} className={`${"card-img-top "} ${s.img}`} alt="qwe" />
+      <img src={image} className={`card-img-top ${s.img}`} alt="qwe" />
     ) : (
-      <img src={img} className={`${"card-img-top "} ${s.img}`} alt="qwe" />
+      <img src={img} className={`card-img-top ${s.img}`} alt="qwe" />
     );
   };
 
@@ -72,11 +72,17 @@ export class Product extends React.Component {
     if (this.state.redirect) {
       return <Redirect push to="/admin" />;
     }
-    const { id, inStock, title, price, quantity } = this.props.product;
+    const {
+      id,
+      inStock,
+      title,
+      price,
+      quantity,
+      category
+    } = this.props.product;
 
     return (
       <div className={s.card}>
-        {/*<div className={`${inStock ? " " : s.cardIsEmpty}`} />*/}
         {this.renderImg()}
         <div className="card-body">
           <h5 className="card-title">Title:{title}</h5>
@@ -85,8 +91,9 @@ export class Product extends React.Component {
           <li className="list-group-item">ID: {id}</li>
           <li className="list-group-item">Price: {price} $</li>
           <li className="list-group-item">Quantity: {quantity}</li>
+          <li className="list-group-item">Category: {category.name}</li>
         </ul>
-        <div className={`${"form-check "} ${s.radioCheck}`}>
+        <div className={`form-check ${s.radioCheck}`}>
           <p>Status: {inStock ? "In Stock" : "Not in Stock"}</p>
         </div>
         {this.renderButtons()}

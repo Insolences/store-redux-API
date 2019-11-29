@@ -4,15 +4,18 @@ import {
   EDIT_PRODUCT,
   DELETE_PRODUCT,
   GET_PRODUCT_LIST,
-  GET_PRODUCT,
-  CLEAR_ERROR_MESSAGE,
-  SHOW_ERROR_MASSAGE,
-  SHOW_NOTIFICATION,
-  GET_COMMENTS_LIST
+  GET_PRODUCT
 } from "../../Action";
-import { initState } from "../../InitState";
 
-export function RootReducer(state = initState.app, action) {
+const initState = {
+  products: [],
+  isInit: false,
+  pages: 0,
+  size: 4,
+  pageNumber: 0
+};
+
+export function RootReducer(state = initState, action) {
   switch (action.type) {
     case IS_INIT: {
       return { ...state, isInit: true };
@@ -62,28 +65,6 @@ export function RootReducer(state = initState.app, action) {
       newProducts = state.products.filter(e => e.id !== id);
       return { ...state, products: newProducts };
     }
-
-    // case SHOW_ERROR_MASSAGE: {
-    //   return { ...state, error: action.payload };
-    // }
-    //
-    // case CLEAR_ERROR_MESSAGE: {
-    //   return { ...state, error: null, message: null };
-    // }
-    //
-    // case SHOW_NOTIFICATION: {
-    //   return { ...state, message: action.payload };
-    // }
-    //
-    // case GET_COMMENTS_LIST: {
-    //   const { pageNumber, totalPages, commentSize } = action.payload;
-    //   return {
-    //     ...state,
-    //     pages: totalPages,
-    //     pageNumber: pageNumber,
-    //     commentSize: commentSize
-    //   };
-    // }
   }
 
   return state;

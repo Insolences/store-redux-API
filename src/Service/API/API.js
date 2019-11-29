@@ -95,16 +95,6 @@ class APIRequest {
     };
   }
 
-  async getCategoryList() {
-    let url = `/category`;
-
-    let response = await http.get(url);
-    return {
-      status: response.status,
-      body: response.data
-    };
-  }
-
   async getProduct(id) {
     let response = await http.get("/product/" + id);
 
@@ -136,6 +126,45 @@ class APIRequest {
     };
   }
 
+  async getCategoryList() {
+    let url = `/category`;
+    let response = await http.get(url);
+    return {
+      status: response.status,
+      body: response.data
+    };
+  }
+  async getCategory(id) {
+    let response = await http.get("/category/" + id);
+
+    return {
+      status: response.status,
+      body: response.data
+    };
+  }
+
+  async addCategory(name, slug, parentId) {
+    let result = {};
+    try {
+      let response = await http.post("/category", {
+        name,
+        parent: { id: parentId },
+        slug
+      });
+
+      result.status = response.status;
+      result.body = response.data;
+    } catch (e) {
+      result.status = e.response.status;
+      result.body = e.response.data;
+    }
+    return result;
+  }
+
+  async deleteCategory(id) {
+    return await http.delete("/category/" + id);
+  }
+
   async addComment(id, text, parentId) {
     let result = {};
     try {
@@ -147,6 +176,39 @@ class APIRequest {
           id
         },
         text
+      });
+      result.status = response.status;
+      result.body = response.data;
+    } catch (e) {
+      result.status = e.response.status;
+      result.body = e.response.data;
+    }
+    return result;
+  }
+
+  async filterCategory(selectorValue) {
+    let response = await http.get("/category/filter", {
+      params: {
+        prefixName: selectorValue
+      }
+    });
+
+    return {
+      status: response.status,
+      body: response.data
+    };
+  }
+
+  async editCategory(categoryId, name, slug, parentId) {
+    let result = {};
+    try {
+      let response = await http.put("/category/", {
+        id: categoryId,
+        name,
+        slug,
+        parent: {
+          id: parentId
+        }
       });
       result.status = response.status;
       result.body = response.data;
@@ -188,7 +250,6 @@ class APIRequest {
 
       result.status = response.status;
       result.body = response.data;
-      console.log(result.body);
     } catch (e) {
       result.status = e.response.status;
       result.body = e.response.data;

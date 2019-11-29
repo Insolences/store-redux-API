@@ -3,16 +3,15 @@ import { bindActionCreators } from "redux";
 import { ProductList } from "./ProductList";
 import {
   getProducts,
-  getPagination
-  // getPaginationPageNumber,
-  // getPaginationPages,
-  // getPaginationSize
+  getNotification,
+  getProductsPagination
 } from "../../Store/Selector/App";
 import { actionDeleteProduct, actionGetProductList } from "../../Store/Action";
 
 function mapDispatchToProps(dispatch) {
   return {
-    getProductListEvent: bindActionCreators(actionGetProductList, dispatch),
+    getProductListEvent: (size, page) =>
+      dispatch(actionGetProductList(size, page)),
     deleteProductEvent: id => dispatch(actionDeleteProduct(id))
   };
 }
@@ -20,9 +19,10 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
   return {
     products: getProducts(state),
-    pages: getPagination(state).pages,
-    pageNumber: getPagination(state).pageNumber,
-    size: getPagination(state).size
+    pages: getProductsPagination(state).pages,
+    pageNumber: getProductsPagination(state).pageNumber,
+    size: getProductsPagination(state).size,
+    notification: getNotification(state)
   };
 }
 

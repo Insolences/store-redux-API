@@ -1,14 +1,13 @@
 import React from "react";
-import { Form, Field, reduxForm } from "redux-form";
-import Category from "./Category/Category.container";
+import { Category } from "./Category";
 import { API } from "../../Service/API";
 import s from "./CategoryList.module.css";
-import AsyncSelect from "react-select/async";
-import { CategoryForm } from "./CategoryForm";
+import { CategoryForm } from "../CategoryForm/CategoryForm";
 
 export class CategoryList extends React.Component {
   state = {
-    categoryList: []
+    categoryList: [],
+    errors: {}
   };
 
   componentDidMount() {
@@ -28,36 +27,53 @@ export class CategoryList extends React.Component {
     });
   };
 
-  addCategory(e) {
-    console.log(e);
-  }
+  deleteCategory = id => {
+    API.deleteCategory(id).then(res => {
+      if (res.status === 200) {
+        this.props.showNotificationEvent("Category deleted");
+        this.getCategoryList();
+      }
+    });
+  };
 
-  renderCategoryList(categoryList) {
+  handleSubmit = values => {
+    this.addCategory(values);
+  };
+
+  addCategory = values => {
+    let name = values.name;
+    let slug = values.slug || values.name;
+    let parentId = values.parent ? values.parent.value : null;
+    API.addCategory(name, slug, parentId).then(res => {
+      if (res.status === 200) {
+        this.props.showNotificationEvent("Category added");
+        this.getCategoryList();
+      }
+      return this.setState({
+        errors: res.body.errors
+      });
+    });
+  };
+
+  renderCategoryList(categoryList, depth = 0) {
     return (
       <>
         {categoryList.map(el => (
           <>
-            <Category category={el} />
-            {el.childs.length ? this.renderCategoryList(el.childs) : ""}
+            <Category
+              category={el}
+              depth={depth}
+              id={el.id}
+              deleteCategory={this.deleteCategory}
+            />
+            {el.childs.length
+              ? this.renderCategoryList(el.childs, depth + 1)
+              : ""}
           </>
         ))}
       </>
     );
   }
-
-  filterCategories = inputValue => {
-    // let newCategories = this.state.categoryList.slice();
-    // return newCategories.filter(i =>
-    //   i.label.toLowerCase().includes(inputValue.toLowerCase())
-    // );
-  };
-
-  promiseOptions = inputValue =>
-    new Promise(resolve => {
-      setTimeout(() => {
-        resolve(this.filterCategories(inputValue));
-      }, 1000);
-    });
 
   render() {
     return (
@@ -67,8 +83,8 @@ export class CategoryList extends React.Component {
           <div className={s.addContainer}>
             <h3>Add categories</h3>
             <CategoryForm
-              onSubmit={this.addCategory}
-              promiseOptions={this.promiseOptions}
+              onSubmit={this.handleSubmit}
+              errors={this.state.errors}
             />
           </div>
           <div className={s.container}>

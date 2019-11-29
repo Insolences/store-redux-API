@@ -1,7 +1,7 @@
 import React from "react";
 import { Product } from "../Product";
 import s from "./ProductList.module.css";
-import Pagination from "../Pagination/Pagination";
+import { Pagination } from "../Pagination";
 
 export class ProductList extends React.Component {
   state = {
@@ -10,7 +10,6 @@ export class ProductList extends React.Component {
 
   componentDidMount() {
     this.props.getProductListEvent(this.props.size, this.props.pageNumber);
-    console.log(this.props.size, this.props.pageNumber);
   }
 
   ToDelete = id => {
@@ -37,8 +36,9 @@ export class ProductList extends React.Component {
           ))}
         </div>
         <Pagination
-          pages={this.props.pages}
           pageNumber={this.props.pageNumber}
+          size={this.props.size}
+          pages={this.props.pages}
           changePage={this.props.getProductListEvent}
         />
       </>

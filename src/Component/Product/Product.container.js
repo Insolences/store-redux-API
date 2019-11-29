@@ -8,13 +8,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-function mapStateToProps(state) {
-  return {
-    products: state.products
-  };
-}
-
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(Product);

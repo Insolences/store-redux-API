@@ -1,3 +1,3 @@
-import Categories from "./CategoryList.container";
+import CategoryList from "./CategoryList.container";
 
-export { Categories };
+export { CategoryList };

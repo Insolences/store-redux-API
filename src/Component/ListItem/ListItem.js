@@ -5,12 +5,12 @@ export default class ListItem extends React.Component {
   handlerChangePage = e => {
     e.preventDefault();
     let index = this.props.index;
-    this.props.changePage(index);
+    this.props.changePage(this.props.size, index);
   };
 
   render() {
     return (
-      <li className={`${"page-item "} ${s.li}`}>
+      <li className={`page-item ${s.li}`}>
         <a
           onClick={this.handlerChangePage}
           className={`${

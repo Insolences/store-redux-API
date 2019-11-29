@@ -3,9 +3,13 @@ import {
   SHOW_ERROR_MASSAGE,
   SHOW_NOTIFICATION
 } from "../../Action";
-import { initState } from "../../InitState";
 
-export function NotificationReducer(state = initState.notification, action) {
+const initState = {
+  error: null,
+  massage: null
+};
+
+export function NotificationReducer(state = initState, action) {
   switch (action.type) {
     case SHOW_ERROR_MASSAGE: {
       return { ...state, error: action.payload };

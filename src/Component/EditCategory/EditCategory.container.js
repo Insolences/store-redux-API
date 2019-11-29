@@ -1,21 +1,15 @@
 import { connect } from "react-redux";
-import { CategoryList } from "./CategoryList";
+import { EditCategory } from "./EditCategory";
 import { bindActionCreators } from "redux";
 import { actionShowNotification } from "../../Store/Action";
-import { getNotification } from "../../Store/Selector";
 
 function mapDispatchToProps(dispatch) {
   return {
     showNotificationEvent: bindActionCreators(actionShowNotification, dispatch)
   };
 }
-function mapStateToProps(state) {
-  return {
-    notification: getNotification(state).massage
-  };
-}
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
-)(CategoryList);
+)(EditCategory);

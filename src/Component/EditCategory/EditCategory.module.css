@@ -1,0 +1,41 @@
+.wrapper{
+    width: 50%;
+    margin: 0 auto;
+    padding: 15px;
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.title{
+    color: #ffc107;
+    text-align: center;
+}
+
+.textarea{
+    resize: none;
+}
+
+.addContainer{
+    width: 90%;
+    align-self: flex-start;
+}
+
+.container{
+    width: 54%;
+}
+
+.container h3{
+    margin-bottom: 15px;
+}
+
+.button{
+    float: right;
+}
+
+
+.categories{
+    width: 100%;
+}
+

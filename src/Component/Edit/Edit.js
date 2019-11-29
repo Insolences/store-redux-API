@@ -2,6 +2,8 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import s from "./Edit.module.css";
 import { Input } from "../Input";
+import { AsyncSelect } from "../AsyncSelect";
+import { API } from "../../Service/API";
 
 export class Edit extends React.Component {
   state = {
@@ -72,6 +74,27 @@ export class Edit extends React.Component {
     return null;
   };
 
+  getCategoryOptionList = async selectValue => {
+    let res;
+    if (selectValue === "") {
+      res = await API.getCategoryList();
+    } else {
+      res = await API.filterCategory(selectValue);
+    }
+    return this.showCategories(res.body.content);
+  };
+
+  showCategories = categories => {
+    let categoryList = [];
+    categories.forEach(el => {
+      categoryList.push({ value: el.id, label: el.name });
+      if (el.childs && el.childs.length > 0) {
+        categoryList = [...categoryList, ...this.showCategories(el.childs)];
+      }
+    });
+    return categoryList;
+  };
+
   render() {
     if (this.state.redirect) {
       return <Redirect push to="/admin" />;
@@ -130,8 +153,14 @@ export class Edit extends React.Component {
                   defaultValue={quantity}
                 />
               </li>
+              <li className="list-group-item">
+                Category:{" "}
+                <AsyncSelect
+                  getCategoryOptionList={this.getCategoryOptionList}
+                />
+              </li>
             </ul>
-            <div className={`${"form-check "} ${s.radioCheck}`}>
+            <div className={`form-check ${s.radioCheck}`}>
               <div>
                 <p>STATUS:</p>
                 <input

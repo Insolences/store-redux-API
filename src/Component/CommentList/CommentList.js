@@ -2,7 +2,6 @@ import React from "react";
 import s from "./CommentList.module.css";
 import { Comment } from "./Comment";
 import { API } from "../../Service/API";
-import { Pagination } from "../Pagination";
 
 export class CommentList extends React.Component {
   state = {
@@ -65,11 +64,6 @@ export class CommentList extends React.Component {
           <h3>Comments:</h3>
           {this.renderComments(this.state.comments)}
         </div>
-        <Pagination
-          pages={this.props.pages}
-          pageNumber={this.props.pageNumber}
-          changePage={this.props.getCommentsListEvent}
-        />
         <form className={s.form}>
           <div className="form-group">
             <label htmlFor="exampleFormControlTextarea1">

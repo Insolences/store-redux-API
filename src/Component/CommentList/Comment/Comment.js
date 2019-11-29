@@ -98,6 +98,12 @@ export class Comment extends React.Component {
 
   renderAnswerBtn() {
     if (this.props.user.id !== this.props.comment.user.id) {
+      console.log(
+        "ID user:",
+        this.props.user.id,
+        "ID who write comment:",
+        this.props.comment.user.id
+      );
       return (
         <button
           className={`btn btn-info ${s.answerBtn}`}

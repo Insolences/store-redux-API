@@ -90,7 +90,7 @@ export default class Registration extends React.Component {
             ref={this.passwordRef}
           />
           <input
-            type="confirmPassword"
+            type="password"
             className="form-control mb-4"
             placeholder="Confirm password"
             ref={this.confirmPasswordRef}

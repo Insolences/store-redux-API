@@ -9,16 +9,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-function mapStateToProps(state) {
-  return {
-    parentId: state.parentId,
-    pages: state.pages,
-    pageNumber: state.pageNumber,
-    size: state.commentsSize
-  };
-}
-
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(CommentList);

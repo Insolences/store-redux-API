@@ -11,6 +11,7 @@ export default class Pagination extends React.Component {
         <ListItem
           index={i}
           key={i}
+          size={this.props.size}
           changePage={this.props.changePage}
           pageNumber={this.props.pageNumber}
         />

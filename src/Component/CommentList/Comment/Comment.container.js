@@ -7,7 +7,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(
-  mapStateToProps,
-  null
-)(Comment);
+export default connect(mapStateToProps)(Comment);

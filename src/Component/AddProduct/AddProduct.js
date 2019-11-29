@@ -17,7 +17,6 @@ export class AddProduct extends React.Component {
   inputPriceRef = React.createRef();
   inputQuantityRef = React.createRef();
   inputUrlRef = React.createRef();
-  inputCategoryRef = React.createRef();
 
   handleClick = e => {
     e.preventDefault();

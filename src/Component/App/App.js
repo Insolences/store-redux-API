@@ -8,7 +8,8 @@ import { Details } from "../Details";
 import { Login } from "../Login";
 import { Registration } from "../Registration";
 import { Notification } from "../Notification";
-import { CategoryList } from "../CategoryList/CategoryList";
+import { CategoryList } from "../CategoryList";
+import { EditCategory } from "../EditCategory";
 import { API } from "../../Service/API";
 import { history } from "../../Service/History";
 import { Navigation } from "../Navigation";
@@ -42,6 +43,7 @@ export class App extends React.Component {
           <Route path="/home/details/:id" exact component={Details} />
           <Route path="/admin/product/edit/:id" exact component={Edit} />
           <Route path="/category" exact component={CategoryList} />
+          <Route path="/category/:id" exact component={EditCategory} />
         </Router>
       </>
     );
